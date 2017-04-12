@@ -6,12 +6,11 @@ namespace PCW
 {
 	public class App : Application
 	{
+		public static PCManager PCManager { get; private set; }
 		public App()
 		{
 
-
-
-
+			PCManager = new PCManager(new RestService());
 			MainPage = new RootPage();
 
 			//MainPage = new NavigationPage(new Login());

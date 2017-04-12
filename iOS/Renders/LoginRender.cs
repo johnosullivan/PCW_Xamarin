@@ -29,10 +29,6 @@ namespace PCW.iOS
 				back.BackgroundColor = textureColor.CGColor;
 				gradientLayer.AddSublayer(back);
 				View.Layer.InsertSublayer(gradientLayer, 0);
-				//UIView loginview = new UIView();
-				//loginview.Frame = View.Frame;
-				//loginview.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("bg-pattern.png"));
-				//View.AddSubview(loginview);
 			}
 		}
 
