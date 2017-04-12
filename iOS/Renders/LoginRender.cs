@@ -31,7 +31,5 @@ namespace PCW.iOS
 				View.Layer.InsertSublayer(gradientLayer, 0);
 			}
 		}
-
-
 	}
 }
