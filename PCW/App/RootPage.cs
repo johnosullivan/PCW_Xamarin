@@ -15,7 +15,7 @@ namespace PCW
             menuPage.SetValue(NavigationPage.BarTextColorProperty, Color.Maroon);
 
             Master = menuPage;
-			Detail = new NavigationPage(new Dashboard()) { BarBackgroundColor = Color.FromHex("12a798"), BarTextColor = Color.White };
+			Detail = new NavigationPage(new Register()) { BarBackgroundColor = Color.FromHex("12a798"), BarTextColor = Color.White };
 
 			ShowLoginDialog();
         }

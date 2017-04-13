@@ -70,10 +70,14 @@ namespace PCW
 		}
 		async void OnLoginButtonClicked(object sender, EventArgs e)
 		{
-			
-			bool status = await App.PCManager.Login("test","Mogilska12!");
+
+			bool status = await App.PCManager.Login("test", "Mogilska12!");
 			Debug.WriteLine("Login: " + status);
-			//await Navigation.PopModalAsync();
+			if (status)
+			{
+				await Navigation.PopModalAsync();
+			}
+
 		}
 	}
 }

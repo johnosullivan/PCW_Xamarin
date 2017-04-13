@@ -41,27 +41,15 @@ namespace PCW
 
 		Task<MessageModel> NewMessageAsync(string m, string team);
 */
-        Task<bool> Login (string username, string password);
+		Task<bool> Login(string username, string password);
 
-		Task<bool> RefreshLogin(string username, string password);
-
-        string GetDisplayName();
-
-        string GetRole();
-
-		string GetEmail();
-
-        string IsLoggined();
-
-        string GetAccountID();
-
-		string GetAccountProURL();
+		Task<bool> LogoutAsync();
 
 		//Dictionary<string,string> GetLastMessage(List<Team> teams);
 
 		//Task<bool> AcceptRequest(Dictionary<string, string> data);
 
 		//Task<bool> DenyRequest(Dictionary<string,string> data);
-    }
+	}
 }
 

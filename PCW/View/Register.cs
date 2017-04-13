@@ -11,7 +11,7 @@ namespace PCW
 		{
 			Button button = new Button
 			{
-				Text = "Click Me!",
+				Text = "Logoff",
 				Font = Font.SystemFontOfSize(NamedSize.Large),
 				BorderWidth = 1,
 				HorizontalOptions = LayoutOptions.Center,
@@ -26,14 +26,14 @@ namespace PCW
 				}
 			};
 		}
-
-
 		async void OnButtonClicked(object sender, EventArgs e)
 		{
-			var page = new NavigationPage(new Login()) { Title = "Login Portal" };
-			await Navigation.PushModalAsync(page);
-
-
+			bool status = await App.PCManager.LogoutAsync();
+			if (status)
+			{
+				var page = new NavigationPage(new Login()) { Title = "Login Portal" };
+				await Navigation.PushModalAsync(page);
+			}
 		}
 	}
 }
