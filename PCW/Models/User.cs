@@ -20,6 +20,7 @@ namespace PCW
 	{
 		public Data data { get; set; }
 		public string message { get; set; }
+		public string error { get; set; }
 	}
 
 }

@@ -13,12 +13,10 @@ namespace PCW
 			NavigationPage.SetHasNavigationBar(this, false);
 			StartColor = Color.FromHex("3c8dbc");
 			EndColor = Color.FromHex("15baa9");
-
 			Title = "";
 			messageLabel = new Label();
 			messageLabel.Text = "PocketCoach";
 			messageLabel.HorizontalTextAlignment = TextAlignment.Center;
-
 			usernameEntry = new Entry
 			{
 				Placeholder = "Username"
@@ -38,10 +36,8 @@ namespace PCW
 			var name = new Image { Aspect = Aspect.AspectFit };
 			name.Source = ImageSource.FromFile("name.png");
 			loginButton.Clicked += OnLoginButtonClicked;
-			//BorderView b = new BorderView();
 			Padding = new Thickness(20, 20, 20, 20);
 			ContentViewRoundedCorners c = new ContentViewRoundedCorners();
-			c.CornerRadius = 10;
 			c.Content = new StackLayout
 			{
 				Spacing = 15,
@@ -49,35 +45,25 @@ namespace PCW
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Children = {
 					new StackLayout {
-						Padding = new Thickness(30, 10, 30, 10),
+						Padding = new Thickness(20, 7, 20, 7),
 						VerticalOptions = LayoutOptions.Center,
 						Children = {name}
 					},
-					usernameEntry,
-					passwordEntry,
-					loginButton
+					usernameEntry, passwordEntry, loginButton
 				}
 			};
 			Content = new StackLayout
 			{
 				Padding = new Thickness(10, 10, 10, 10),
 				VerticalOptions = LayoutOptions.Center,
-				Children = {
-					c
-				}
-
+				Children = { c }
 			};
 		}
 		async void OnLoginButtonClicked(object sender, EventArgs e)
 		{
-
-			bool status = await App.PCManager.Login("test", "Mogilska12!");
-			Debug.WriteLine("Login: " + status);
-			if (status)
-			{
-				await Navigation.PopModalAsync();
-			}
-
+			if (await App.PCManager.Login(usernameEntry.Text, passwordEntry.Text))
+			{ await Navigation.PopModalAsync(); }
+			else { await DisplayAlert("Accessed Denied!", "The following credentials are invalid. Please try again.", "Dismiss"); }
 		}
 	}
 }

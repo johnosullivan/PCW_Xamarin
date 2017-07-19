@@ -28,7 +28,7 @@ class ContentViewRoundedCornersRenderer : VisualElementRenderer<ContentView>
         Layer.ShadowRadius = 6.0f;
         Layer.ShadowOffset = new SizeF(0f, 3f);
 		Layer.BackgroundColor = UIColor.White.CGColor;
-		Layer.CornerRadius = ((ContentViewRoundedCorners)Element).CornerRadius;
+		Layer.CornerRadius = 10;
 	}
 }
 }

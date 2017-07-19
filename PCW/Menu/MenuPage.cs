@@ -1,94 +1,90 @@
 ﻿using System;
 using Xamarin.Forms;
 using System.Collections.Generic;
-//using ImageCircle.Forms.Plugin.Abstractions;
+using ImageCircle.Forms.Plugin.Abstractions;
 using System.Diagnostics;
 using System.IO;
 
 namespace PCW
 {
-	public class MenuPage : ContentPage
+public class MenuPage : ContentPage
+{
+	public ListView Menu { get; set; }
+
+
+	/*protected async override void OnAppearing()
 	{
-		public ListView Menu { get; set; }
+		base.OnAppearing();
+	}*/
+	Label nameLabel;
+	Label distanceLabel;
+	CircleImage profile;
+	public MenuPage()
+	{
+		Icon = "settings.png";
 
 
-		/*protected async override void OnAppearing()
+		Title = "Menu"; // The Title property must be set.
+						//BackgroundColor = Color.FromHex ("333333");
+		BackgroundColor = Color.FromHex("333");
+
+	 
+		Menu = new MenuListView("coach");
+
+		Menu.BackgroundColor = Color.FromHex("333");
+
+		/*var menuLabel = new ContentView {
+			Padding = new Thickness (20, 0, 0, 5),
+			Content = new Label {
+				TextColor = Color.FromHex ("AAAAAA"),
+				Text = ""
+			}
+		};*/
+
+		//var s = DependencyService.Get<ISaveAndLoad>();
+		//string path = s.GetPath("");
+
+
+		profile = new CircleImage
 		{
-			base.OnAppearing();
+			BorderColor = Color.FromHex("1caf9a"),
+			BorderThickness = 0,
+			HeightRequest = 50,
+			WidthRequest = 50,
+			Aspect = Aspect.AspectFill,
+			HorizontalOptions = LayoutOptions.Start,
+			VerticalOptions = LayoutOptions.Center,
+			Source = ImageSource.FromFile("profile-placeholder.png")
+		};
 
-
-		}*/
-		Label nameLabel;
-		Label distanceLabel;
-		//CircleImage profile;
-		public MenuPage ()
-		{
-			Icon = "settings.png";
-
-
-			Title = "Menu"; // The Title property must be set.
-							//BackgroundColor = Color.FromHex ("333333");
-			BackgroundColor = Color.FromHex("1caf9a");
-
-	
-            
-
-            Menu = new MenuListView ("user");
-
-			Menu.BackgroundColor = Color.FromHex("333");
-
-			/*var menuLabel = new ContentView {
-				Padding = new Thickness (20, 0, 0, 5),
-				Content = new Label {
-					TextColor = Color.FromHex ("AAAAAA"),
-					Text = ""
-                }
-			};*/
-
-			//var s = DependencyService.Get<ISaveAndLoad>();
-			//string path = s.GetPath("");
-
-
-			/*profile = new CircleImage
-			{
-				BorderColor = Color.FromHex("1caf9a"),
-				BorderThickness = 0,
-				HeightRequest = 50,
-				WidthRequest = 50,
-				Aspect = Aspect.AspectFill,
-				HorizontalOptions = LayoutOptions.Start,
-				VerticalOptions = LayoutOptions.Center,
-				Source = ImageSource.FromFile("Alert.png")
-			};*/
-
-			/* var slpitter = new ContentView
+		/* var slpitter = new ContentView
+		 {
+			 Padding = new Thickness(20, 25, 0, 5),
+			 Content = new Label
 			 {
-				 Padding = new Thickness(20, 25, 0, 5),
-				 Content = new Label
-				 {
-					 TextColor = Color.FromHex("AAAAAA"),
-					 Text = "",
-				 }
-			 };*/
+				 TextColor = Color.FromHex("AAAAAA"),
+				 Text = "",
+			 }
+		 };*/
 
-		
+
 		nameLabel = new Label()
 		{
 			FontFamily = "HelveticaNeue-Medium",
-			FontSize = 18,
+			FontSize = 20,
 			TextColor = Color.Black
 		};
-			nameLabel.Text = "";
-			nameLabel.TextColor = Color.White;
- 
+		nameLabel.Text = "";
+		nameLabel.TextColor = Color.White;
+
 		distanceLabel = new Label()
 		{
 			FontAttributes = FontAttributes.Bold,
 			FontSize = 12,
 			TextColor = Color.White
 		};
-		distanceLabel.Text = "Name";
- 
+		distanceLabel.Text = "John O'Sullivan";
+
 		// Online image and label
 		var onlineImage = new Image()
 		{
@@ -99,10 +95,10 @@ namespace PCW
 		var onLineLabel = new Label()
 		{
 			Text = "",
-				TextColor = Color.Blue,
+			TextColor = Color.Blue,
 			FontSize = 12,
 		};
- 
+
 		// Offline image and label
 		var offlineImage = new Image()
 		{
@@ -116,30 +112,24 @@ namespace PCW
 			TextColor = Color.FromHex("#ddd"),
 			FontSize = 12,
 		};
- 
+
 		// Vet rating label and star image
 		var starLabel = new Label()
 		{
 			FontSize = 12,
 			TextColor = Color.Gray
 		};
- 
-		var starImage = new Image()
+			starLabel.Text = "jnosullivan@icloud.com";
+	 	var ratingStack = new StackLayout()
 		{
-			Source = "star.png",
-			HeightRequest = 12,
-			WidthRequest = 12
-		};
-
-		var ratingStack = new StackLayout()
-		{
-			Spacing = 3,
+			Spacing = 5,
 			Orientation = StackOrientation.Horizontal,
-			Children = { starImage, starLabel }
+			Children = { starLabel }
 		};
 
 		var statusLayout = new StackLayout
 		{
+				Spacing = 5,
 			Orientation = StackOrientation.Horizontal,
 			Children = {
 								distanceLabel,
@@ -153,7 +143,7 @@ namespace PCW
 		var vetDetailsLayout = new StackLayout
 		{
 			Padding = new Thickness(15, 0, 0, 0),
-			Spacing = 0,
+			Spacing = 5,
 			HorizontalOptions = LayoutOptions.FillAndExpand,
 			Children = { nameLabel, statusLayout, ratingStack }
 		};
@@ -171,37 +161,41 @@ namespace PCW
 			Padding = new Thickness(10, 28, 0, 0),
 			Orientation = StackOrientation.Horizontal,
 			HorizontalOptions = LayoutOptions.FillAndExpand,
-				Children = { vetDetailsLayout, tapImage }
+			Children = { profile, vetDetailsLayout, tapImage }
 		};
 
 
-            var layout = new StackLayout { 
-				Spacing = 5, 
-				VerticalOptions = LayoutOptions.FillAndExpand
-			};
+		var layout = new StackLayout
+		{
+			Spacing = 5,
+			VerticalOptions = LayoutOptions.FillAndExpand
+		};
 
-			layout.Children.Add(cellLayout);
+		layout.Children.Add(cellLayout);
 
-			//layout.Children.Add (menuLabel);
-
-
-
-
-			layout.Children.Add (Menu);
+		//layout.Children.Add (menuLabel);
 
 
-			Content = layout;
 
-          
-        }
 
-       
+		layout.Children.Add(Menu);
 
-		public void UpDate(string str){
 
-				List<MenuItem> data = new MenuListData (str);
-				Menu.ItemsSource = data;
-			
-		}
+		Content = layout;
+
+	
+
+	}
+
+
+
+	public void UpDate(string str)
+	{
+
+		List<MenuItem> data = new MenuListData(str);
+		Menu.ItemsSource = data;
+
+	}
+
 	}
 }

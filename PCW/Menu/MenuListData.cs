@@ -23,28 +23,18 @@ namespace PCW
 	{
 		public MenuListData (string str)
 		{
-
-			if (str == "user") {
-				
-				Add (new MenuItem () { 
-					Title = "Dashboard",
-                    Des = "Home" 
-				});
-
-
-
-
-
-
+			if (str == "coach") {
+                Add(new MenuItem (){ Title = "Dashboard", Des = "Home", TargetType = typeof(Dashboard) });
+                Add(new MenuItem() { Title = "Teams", Des = "Home", TargetType = typeof(Dashboard) });
+                Add(new MenuItem() { Title = "Athletes", Des = "Home", TargetType = typeof(Dashboard) });
+                Add(new MenuItem() { Title = "Contacts", Des = "Home", TargetType = typeof(Dashboard) });
+                Add(new MenuItem() { Title = "Workouts", Des = "Home", TargetType = typeof(Dashboard) });
+                Add(new MenuItem() { Title = "Calendars", Des = "Home", TargetType = typeof(Dashboard) });
+                Add(new MenuItem() { Title = "Polls", Des = "Home", TargetType = typeof(Dashboard) });
+                Add(new MenuItem() { Title = "Games", Des = "Home", TargetType = typeof(Dashboard) });
+                Add(new MenuItem() { Title = "Settings", Des = "Home", TargetType = typeof(Dashboard) });
             } else if (str == "athlete") {
-				
-
-
             } 
-
-
-
-
 		}
 	}
 }

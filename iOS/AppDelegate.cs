@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using ImageCircle.Forms.Plugin.iOS;
 using Foundation;
 using UIKit;
 
@@ -13,6 +13,7 @@ namespace PCW.iOS
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			global::Xamarin.Forms.Forms.Init();
+			ImageCircleRenderer.Init();
 			UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.Default, false);
 			// Code for starting up the Xamarin Test Cloud Agent
 #if ENABLE_TEST_CLOUD
