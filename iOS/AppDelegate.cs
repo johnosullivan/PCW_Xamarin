@@ -4,6 +4,7 @@ using System.Linq;
 using ImageCircle.Forms.Plugin.iOS;
 using Foundation;
 using UIKit;
+using Syncfusion.SfCalendar.XForms.iOS;
 
 namespace PCW.iOS
 {
@@ -14,9 +15,12 @@ namespace PCW.iOS
 		{
 			global::Xamarin.Forms.Forms.Init();
 			ImageCircleRenderer.Init();
+
+            new SfCalendarRenderer();
+
 			UIApplication.SharedApplication.SetStatusBarStyle (UIStatusBarStyle.Default, false);
-			// Code for starting up the Xamarin Test Cloud Agent
-#if ENABLE_TEST_CLOUD
+
+            #if ENABLE_TEST_CLOUD
 			Xamarin.Calabash.Start();
 #endif
 

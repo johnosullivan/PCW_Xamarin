@@ -11,7 +11,7 @@ namespace PCW
 			Title = "Dashboard";
 			Button button = new Button
 			{
-				Text = "Logoff",
+				Text = "Sign Off",
 				Font = Font.SystemFontOfSize(NamedSize.Large),
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -32,7 +32,7 @@ namespace PCW
 			if (status)
 			{
 				var page = new NavigationPage(new Login()) { Title = "Login Portal" };
-				await Navigation.PushModalAsync(page);
+				await Navigation.PushModalAsync(page, false);
 			}
 		}
 	}

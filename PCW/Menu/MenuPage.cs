@@ -158,7 +158,7 @@ public class MenuPage : ContentPage
 		var cellLayout = new StackLayout
 		{
 			Spacing = 0,
-			Padding = new Thickness(10, 28, 0, 0),
+			Padding = new Thickness(10, 38, 0, 0),
 			Orientation = StackOrientation.Horizontal,
 			HorizontalOptions = LayoutOptions.FillAndExpand,
 			Children = { profile, vetDetailsLayout, tapImage }
@@ -173,7 +173,6 @@ public class MenuPage : ContentPage
 
 		layout.Children.Add(cellLayout);
 
-		//layout.Children.Add (menuLabel);
 
 
 

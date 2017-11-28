@@ -7,7 +7,7 @@ using CoreGraphics;
 using CoreAnimation;
 using UIKit;
 
-[assembly: ExportRenderer(typeof(Login), typeof(LoginRender))]
+//[assembly: ExportRenderer(typeof(Login), typeof(LoginRender))]
 
 namespace PCW.iOS
 {

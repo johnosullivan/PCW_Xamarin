@@ -23,7 +23,7 @@ namespace PCW
 		async void ShowLoginDialog()
 		{
 			var page = new NavigationPage(new Login()) { BarBackgroundColor = Color.FromHex("12a798"), BarTextColor = Color.White, Title = "Login Portal" };
-			await Navigation.PushModalAsync(page);
+			await Navigation.PushModalAsync(page, false);
 		}
 
 		void NavigateTo (MenuItem menu)
