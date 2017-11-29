@@ -6,8 +6,9 @@ namespace PCW
 {
 	public class Login : GradientContentPage
 	{
-		Entry usernameEntry, passwordEntry;
+        EntryAuth usernameEntry, passwordEntry;
 		Label messageLabel;
+        ContentViewRoundedCorners c;
 		public Login()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
@@ -21,11 +22,11 @@ namespace PCW
 			messageLabel = new Label();
 			messageLabel.Text = "PocketCoach";
 			messageLabel.HorizontalTextAlignment = TextAlignment.Center;
-			usernameEntry = new Entry
+            usernameEntry = new EntryAuth
 			{
 				Placeholder = "Username"
 			};
-			passwordEntry = new Entry
+            passwordEntry = new EntryAuth
 			{
 				IsPassword = true,
 				Placeholder = "Password"
@@ -35,16 +36,16 @@ namespace PCW
 				Text = "Sign In",
 				BackgroundColor = Color.FromHex("15baa9"),
 				TextColor = Color.White,
-				HeightRequest = 35
+				HeightRequest = 45
 			};
 			var name = new Image { Aspect = Aspect.AspectFit };
 			name.Source = ImageSource.FromFile("name.png");
 			loginButton.Clicked += OnLoginButtonClicked;
 			Padding = new Thickness(20, 20, 20, 20);
-			ContentViewRoundedCorners c = new ContentViewRoundedCorners();
+			c = new ContentViewRoundedCorners();
 			c.Content = new StackLayout
 			{
-				Spacing = 0,
+				Spacing = 20,
 				Padding = new Thickness(20, 20, 20, 20),
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Children = {
@@ -59,15 +60,18 @@ namespace PCW
 			Content = new StackLayout
 			{
 				Padding = new Thickness(10, 10, 10, 10),
+                Spacing = 20,
 				VerticalOptions = LayoutOptions.Center,
                 Children = { loginButton }
 			};
 		}
 		async void OnLoginButtonClicked(object sender, EventArgs e)
 		{
+            //c.IsVisible = false;
 			if (await App.PCManager.Login(usernameEntry.Text, passwordEntry.Text))
 			{ await Navigation.PopModalAsync(); }
 			else { await DisplayAlert("Accessed Denied!", "The following credentials are invalid. Please try again.", "Dismiss"); }
+            
 		}
 	}
 }

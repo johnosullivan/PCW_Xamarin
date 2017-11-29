@@ -26,7 +26,7 @@ namespace PCW
 			if (str == "coach") {
                 Add(new MenuItem (){ Title = "Dashboard", Des = "Home", TargetType = typeof(Dashboard) });
                 Add(new MenuItem() { Title = "Teams", Des = "Home", TargetType = typeof(Temp) });
-                Add(new MenuItem() { Title = "Athletes", Des = "Home", TargetType = typeof(Dashboard) });
+                Add(new MenuItem() { Title = "Athletes", Des = "Home", TargetType = typeof(MyAthletes) });
                 Add(new MenuItem() { Title = "Contacts", Des = "Home", TargetType = typeof(Dashboard) });
                 Add(new MenuItem() { Title = "Workouts", Des = "Home", TargetType = typeof(Dashboard) });
                 Add(new MenuItem() { Title = "Calendars", Des = "Home", TargetType = typeof(Dashboard) });

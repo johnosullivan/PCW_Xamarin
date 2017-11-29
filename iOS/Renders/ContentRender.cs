@@ -7,6 +7,7 @@ using CoreGraphics;
 using CoreAnimation;
 using UIKit;
 using System.Drawing;
+
 [assembly: ExportRenderer(typeof(ContentViewRoundedCorners), typeof(ContentViewRoundedCornersRenderer))]
 
 namespace PCW.iOS
